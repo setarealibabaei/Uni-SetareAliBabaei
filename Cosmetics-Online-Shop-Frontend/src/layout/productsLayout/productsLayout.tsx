@@ -1,22 +1,14 @@
-import Footer from "../../components/footer";
-import Header from "../../components/header";
 import { Outlet } from "react-router-dom";
-import Navbar from "../../components/navbar";
 import Sidebar from "../../components/sidebar";
-
 
 const ProductsLayout = () => {
   return (
-    <>
-      <Header />
-      <Navbar />
-      <div className="flex">
-        <Sidebar />
+    <div className="flex flex-1 min-h-[calc(100vh-200px)]">
+      <Sidebar />
+      <div className="flex-1">
         <Outlet />
       </div>
-
-      <Footer />
-    </>
+    </div>
   );
 };
 

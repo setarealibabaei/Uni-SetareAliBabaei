@@ -1,4 +1,3 @@
-/////////////////////////////////////////
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
@@ -36,35 +35,36 @@ interface ProductComponentProps {
   product: Product;
 }
 
-////////////////
 const NextArrow = ({ onClick }: { onClick?: () => void }) => (
   <button
     onClick={onClick}
-    className="absolute top-1/2 -right-6 -translate-y-1/2 z-10 text-2xl   text-violet-600 p-2 rounded-full font-bold"
-    style={{ display: "block" }}
+    className="absolute top-1/2 -right-5 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-[#E51F8E] hover:text-white transition-all duration-300"
   >
-    &gt;
+    <img
+      src="/arrow-down.svg"
+      alt="next"
+      className="w-4 h-4 -rotate-90 object-contain"
+    />
   </button>
 );
 
 const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
   <button
     onClick={onClick}
-    className="absolute top-1/2 -left-6 -translate-y-1/2 z-10 text-2xl  text-violet-600 p-2 rounded-full font-bold"
-    style={{ display: "block" }}
+    className="absolute top-1/2 -left-5 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-[#E51F8E] hover:text-white transition-all duration-300"
   >
-    &lt;
+    <img
+      src="/arrow-down.svg"
+      alt="next"
+      className="w-4 h-4 rotate-90 object-contain"
+    />
   </button>
 );
-////////////////////////
+
 const ProductPage = () => {
   const sliderRef = useRef<Slider>(null);
   const { productId } = useParams<{ productId: string }>();
 
-  const cartItems = useSelector((state: RootState) => state.cart.items);
-
-  // Ensure productId is not undefined before proceeding
-  const safeProductId = productId || "";
 
   const {
     data: product,
@@ -88,79 +88,81 @@ const ProductPage = () => {
   if (error) return <div>خطا: {error.message}</div>;
   if (!product) return <div>محصول یافت نشد</div>;
 
-  ///////////////
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    rtl: true,
-  };
-  //////////////////////
-  // Find the quantity of this product in the cart, using safeProductId
-  const productInCart = cartItems[safeProductId] || 0;
-  //////////////////
   return (
-    <div className="flex flex-col items-center mx-10 gap-2">
-      <div className="mt-5"></div>
-      <div className="flex flex-col  my-6 lg:flex-row lg:gap-20 ">
-        <div className="w-96 p-6 shadow ">
-          <Slider className="" ref={sliderRef} {...sliderSettings}>
-            {product.images.map((image, index) => (
+    <div className="w-full flex justify-center">
+      <div className="w-full max-w-[1200px] px-5 md:px-4 m-auto">
+        <div className="flex flex-col mt-8 md:mt-20 items-center lg:items-start lg:flex-row gap-14 ">
+          <div className="relative w-full max-w-[429px] h-auto aspect-square bg-white rounded-[16px] shadow-md p-10 flex items-center justify-center border border-border">
+            <Slider
+              ref={sliderRef}
+              {...{
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                rtl: true,
+                nextArrow: <NextArrow />,
+                prevArrow: <PrevArrow />,
+                customPaging: () => (
+                  <div className="w-[8px] h-[8px] bg-[#D9D9D9] rounded-full hover:bg-[#E51F8E] transition-all duration-300"></div>
+                ),
+              }}
+              className="w-full h-full"
+            >
+              {product.images.map((image, index) => (
+                <img
+                  key={index}
+                  src={`http://localhost:8000/images/products/images/${image}`}
+                  alt={`Product ${index + 1}`}
+                  className="w-full  object-cover border-border border rounded-[16px]"
+                />
+              ))}
               <img
-                key={index}
-                src={`http://localhost:8000/images/products/images/${image}`}
-                alt={`Product ${index + 1}`}
+                src={`http://localhost:8000/images/products/thumbnails/${product.thumbnail}`}
+                alt={product.name}
+                className="w-full  object-cover  border-border border rounded-[16px]"
               />
-            ))}
-            <img
-              src={`http://localhost:8000/images/products/thumbnails/${product.thumbnail}`}
-              alt={product.name}
-            />
-          </Slider>
-        </div>
-        <div className="text-violet-800">
-          {`${product.category.name} / ${product.subcategory.name}`}
-        </div>
-
-        <div className="m-5 w-96 h-64 flex flex-col items-center shadow p-10">
-          <div>
-            <h2 className="w-80">{product.name}</h2>
-            {/* /شرط موجودی/ */}
-            {product.quantity > 0 && (
-              <p className="text-left mt-2">
-                {product.price} {"تومان"}
-              </p>
-            )}
-            {/* Display the number of this item in the cart if it exists */}
-            {productInCart > 0 && (
-              <p className="text-violet-500">در سبد خرید: {productInCart}</p>
-            )}
+            </Slider>
           </div>
 
-          <div className="">
-            <ProductComponent product={product} />
+          <div className="flex flex-col w-full">
+            <div className="text-xl text-text font-bold mb-8">
+              {`${product.category.name} / ${product.subcategory.name}`}
+            </div>
+
+            <div className="flex flex-col justify-between flex-nowrap border border-border h-[220px] rounded-[16px] shadow-[0_0_10px_0_#00000040] p-[30px]">
+              <div className="flex flex-row justify-between items-center">
+                <span className="text-text text-lg">{product.name}</span>
+                {product.quantity > 0 && (
+                  <div>
+                    <span className="text-accent text-[25px]">
+                      {product.price}
+                    </span>
+                    <span className="text-text text-[18px]"> تومان </span>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <ProductComponent product={product} />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div
-        id=""
-        className="w-full  shadow border border-violet-400  space-y-2  p-10 mb-5 text-gray-400"
-      >
-        <h2>توضیحات محصول</h2>
-        <h2>{product.name}</h2>
-        {/* <p> {product.quantity}</p> */}
-        <p>برند: {product.brand}</p>
+        <div className="mt-11 mb-14 border border-border  rounded-[16px] shadow-[0_0_10px_0_#00000040] p-[30px]">
+          <h2 className="text-accent">توضیحات محصول</h2>
+          <h2 className="text-text">{product.name}</h2>
+          <p className="text-accent mt-2">
+            برند: <span className="text-text">{product.brand}</span>
+          </p>
 
-        <div
-          className=""
-          dangerouslySetInnerHTML={{ __html: product.description }}
-        ></div>
+          <div
+            className="mt-2"
+            dangerouslySetInnerHTML={{ __html: product.description }}
+          ></div>
+        </div>
       </div>
     </div>
   );
@@ -168,7 +170,6 @@ const ProductPage = () => {
 
 export default ProductPage;
 
-///
 const ProductComponent: React.FC<ProductComponentProps> = ({ product }) => {
   const [quantity, setQuantity] = React.useState<number>(1);
   const [hideInput, setHideInput] = React.useState<boolean>(false);
@@ -178,15 +179,14 @@ const ProductComponent: React.FC<ProductComponentProps> = ({ product }) => {
   const productInCart = cartItems[product._id] || 0;
 
   useEffect(() => {
-    // Calculate the initial quantity and hideInput state when the component mounts
     const maxPossible = product.quantity - productInCart;
     if (maxPossible <= 0) {
       setHideInput(true);
       setQuantity(0);
     } else {
-      setQuantity(Math.min(1, maxPossible)); 
+      setQuantity(Math.min(1, maxPossible));
     }
-  }, [product.quantity, productInCart]); 
+  }, [product.quantity, productInCart]);
 
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => {
@@ -223,46 +223,61 @@ const ProductComponent: React.FC<ProductComponentProps> = ({ product }) => {
     return <div className="text-gray-500 mt-2 "> اتمام موجودی</div>;
   } else {
     return (
-      <div className="">
-        {!hideInput ? (
-          <div className="border border-violet-400 rounded-md w-20 flex justify-center">
+      <>
+        <div className="flex flex-row justify-between items-center w-full ">
+          {!hideInput ? (
+            <div className="border-2 border-layout-sidebar rounded-2xl w-20 flex justify-center">
+              <button
+                onClick={incrementQuantity}
+                disabled={quantity >= product.quantity - productInCart}
+                className="ml-4 text-layout-sidebar text-xl"
+              >
+                +
+              </button>
+              <input
+                className="w-8 focus:outline-none text-center"
+                type="number"
+                value={quantity}
+                readOnly
+              />
+              <button
+                onClick={decrementQuantity}
+                disabled={quantity === 1}
+                className="text-layout-sidebar text-xl font-bold"
+              >
+                -
+              </button>
+            </div>
+          ) : (
+            <div className="text-text text-lg font-bold mt-2">
+              شما حداکثر تعداد را انتخاب کردید
+            </div>
+          )}
+          <div className="flex flex-row justify-between items-center gap-2">
+            {productInCart > 0 && (
+              <p className="text-text">در سبد خرید: {productInCart}</p>
+            )}
             <button
-              onClick={incrementQuantity}
-              disabled={quantity >= product.quantity - productInCart}
-              className="ml-4 text-violet-600 text-xl"
+              className={` text-white rounded-2xl focus:outline-none font-medium text-sm px-5 py-2.5 text-center hidden md:block ${
+                hideInput ? "bg-accent" : "bg-accent hover:bg-text-hover"
+              }`}
+              onClick={handleAddToCart}
+              disabled={hideInput}
             >
-              +
-            </button>
-            <input
-              className="w-8 focus:outline-none text-center"
-              type="number"
-              value={quantity}
-              readOnly
-            />
-            <button
-              onClick={decrementQuantity}
-              disabled={quantity === 1}
-              className="text-violet-600 text-xl font-bold"
-            >
-              -
+              افزودن به سبد خرید
             </button>
           </div>
-        ) : (
-          <div className="text-purple-900 text-lg font-bold mt-2">شما حداکثر تعداد را انتخاب کردید</div> // Display "Maximum" when input group is hidden
-        )}
-
+        </div>
         <button
-          className={`w-80 text-white rounded-3xl focus:outline-none font-medium text-sm px-5 py-2.5 text-center mt-5  ${
-            hideInput ? "bg-purple-200" : "bg-purple-500 hover:bg-purple-700"
+          className={`w-full mt-5 text-white rounded-2xl focus:outline-none font-medium text-sm px-5 py-2.5 text-center block md:hidden ${
+            hideInput ? "bg-accent" : "bg-accent hover:bg-text-hover"
           }`}
           onClick={handleAddToCart}
-          disabled={hideInput} // Disable the button when the maximum is reached
+          disabled={hideInput}
         >
           افزودن به سبد خرید
         </button>
-      </div>
+      </>
     );
   }
 };
-
-/////

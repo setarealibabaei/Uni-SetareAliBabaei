@@ -1,19 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-//
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/cartSlice";
-//
 
 export default function CartPayment() {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  ////
   const dispatch = useDispatch();
-  ///
-
+  
   const handlePayment = async () => {
     setIsSubmitting(true);
     const token = localStorage.getItem("accessToken");

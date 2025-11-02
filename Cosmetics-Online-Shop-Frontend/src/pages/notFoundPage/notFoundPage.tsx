@@ -15,13 +15,13 @@ export default function NotFound() {
             />
           </div>
 
-          <div className="flex flex-col justify-center items-center gap-5 text-violet-900">
+          <div className="flex flex-col justify-center items-center gap-5 text-text">
             <h1 className="text-3xl font-bold ">
               صفحه مورد نظر یافت نشد
             </h1>
 
             <div>
-              <Link className="font-bold border text-violet-600 border-violet-600 rounded-md p-2" to="/">بازگشت به خانه</Link>
+              <Link className="font-bold border text-accent border-accent rounded-md p-2" to="/">بازگشت به خانه</Link>
             </div>
           </div>
         </div>

@@ -2,32 +2,37 @@ import { Link } from "react-router-dom";
 
 export default function SuccessfulPayment () {
     return (
-      <form className=" flex flex-col w-full  font-IRANSans mb-20">
-      <div className=" flex flex-col justify-center items-center mt-24 ">
-        <div className="w-96 m-auto flex flex-col justify-center items-center shadow p-5">
-          <div className="w-full"></div>
-
-          <div>
-            <img
-              className="h-28 w-28 rounded-full mb-8 "
-              src="../../../public/lavender.png"
-              alt="lavender"
-            />
-          </div>
-
-          <div className="flex flex-col justify-center items-center gap-5 text-violet-900">
-            <h1 className="text-2xl font-bold ">
-              سفارش شما با موفقیت ثبت شد.
-            </h1>
+      <form className=" flex flex-col w-full  font-IRANSans">
+        <div className=" flex flex-col justify-center items-center my-6 ">
+          <div className="w-full max-w-96 mx-auto flex flex-col justify-center items-center shadow-[0_0_10px_0_#00000040] p-5 bg-white rounded-2xl">
+            <div className="w-full"></div>
 
             <div>
-              <Link className="font-bold border border-violet-600 rounded-md p-2" to="/">بازگشت به خانه</Link>
+              <img
+                className="h-28 w-28 rounded-full mb-8 "
+                src="../../../public/favicon.png"
+                alt="lavender"
+              />
+            </div>
+
+            <div className="flex flex-col justify-center items-center gap-5 text-text">
+              <h1 className="text-xl font-bold ">
+                سفارش شما با موفقیت ثبت شد.
+              </h1>
+
+              <div>
+                <Link
+                  className="font-bold border border-accent text-accent rounded-md p-2"
+                  to="/"
+                >
+                  بازگشت به خانه
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
-    )
+      </form>
+    );
   }
 
   

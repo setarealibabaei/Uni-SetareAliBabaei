@@ -69,19 +69,25 @@ const SubcategorizationPage = () => {
 
   return (
     <div className="m-5 w-full flex flex-col">
-      <div className="text-xl font-bold mb-6">{`خانه / ${categoryName} / ${subcategoryName}`}</div>
+      <div className="text-xl text-text font-bold mb-6">{`خانه / ${categoryName} / ${subcategoryName}`}</div>
       <div className="grid grid-cols-1 m-auto sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      {products.map((product: Product) => (
-          <ProductItem key={product._id} product={product} />))}
+        {products.map((product: Product) => (
+          <ProductItem key={product._id} product={product} />
+        ))}
       </div>
-      <div className="pagination flex justify-center items-center mt-4">
+
+      <div className="pagination flex justify-center items-center mt-6">
         {currentPage > 1 && (
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             className="page-item text-gray-600 font-bold"
             style={{ margin: "0 5px" }}
           >
-            {"<"}
+            <img
+              src="/arrow-down.svg"
+              alt="قبلی"
+              className="w-6 h-6 object-contain -rotate-90"
+            />
           </button>
         )}
         {Array.from({ length: totalPages }, (_, index) => {
@@ -102,8 +108,8 @@ const SubcategorizationPage = () => {
                 onClick={() => handlePageChange(index + 1)}
                 className={`page-item ${
                   currentPage === index + 1
-                    ? "bg-violet-400 text-white font-bold  px-2 rounded-full"
-                    : "text-gray-700"
+                    ? "bg-accent text-white font-bold  px-4  w-11 h-11 rounded-2xl"
+                    : "text-text"
                 } `}
                 style={{ margin: "0 5px" }}
               >
@@ -134,7 +140,11 @@ const SubcategorizationPage = () => {
             className="page-item text-gray-600 font-bold"
             style={{ margin: "0 5px" }}
           >
-            {">"}
+            <img
+              src="/arrow-down.svg"
+              alt="بعدی"
+              className="w-6 h-6 object-contain rotate-90"
+            />
           </button>
         )}
       </div>

@@ -49,75 +49,71 @@ const Navbar = () => {
   }));
 
   return (
-    <nav className="bg-violet-950 text-white  z-50 sticky ">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between">
-          {/* Hamburger Menu */}
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)}>
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16m-7 6h7"></path>
-              </svg>
-            </button>
-          </div>
+    <nav className="w-full min-h-[70px] border-b-2 border-border sm:border-none px-5 md:px-0 bg-layout-sidebar content-center z-50 sticky ">
+      <div className="flex justify-between">
+        {/* Hamburger Menu */}
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setIsOpen(!isOpen)}>
+            <img src="/hamburger.svg" alt="Hamburger" />
+          </button>
         </div>
       </div>
+
       {/* Mobile Menu */}
-      <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
+      <div
+        className={`${
+          isOpen ? "block" : "hidden"
+        } md:hidden absolute top-[70px] left-0 w-full bg-layout-sidebar z-50 `}
+      >
         {categoriesWithSubcategories?.map((category: Category) => (
-          <div key={category._id} className="px-4 py-2 hover:bg-violet-900">
-            <Link to={`/categorization/${category._id}`}>{category.name}</Link>
+          <div key={category._id} className="py-2">
+            <Link
+              to={`/categorization/${category._id}`}
+              className="block py-2 px-5 text-accent font-semibold text-[16px] rounded-md hover:bg-accent/10 transition-colors duration-200"
+              onClick={() => setIsOpen(false)}
+            >
+              {category.name}
+            </Link>
+
             {category.subcategories?.map((subcategory: Subcategory) => (
-              <div key={subcategory._id} className="pl-4 hover:bg-violet-800">
-                <Link
-                  to={`/categorization/${category._id}/subcategorization/${subcategory._id}`}
-                >
-                  {subcategory.name}
-                </Link>
-              </div>
+              <Link
+                key={subcategory._id}
+                to={`/categorization/${category._id}/subcategorization/${subcategory._id}`}
+                className="block pl-8 py-2 px-5 text-text hover:bg-accent hover:text-white rounded-md transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                {subcategory.name}
+              </Link>
             ))}
           </div>
         ))}
       </div>
+
       {/* Desktop Menu */}
-      <div className="hidden md:block mr-14">
+      <div className="hidden md:block content-center w-full h-[70px] border-b-2 border-border px-[30px] bg-layout-sidebar">
         {categoriesWithSubcategories?.map((category: Category) => (
           <div key={category._id} className="group inline-block ">
-            <Link
-              to={`/categorization/${category._id}`}
-              className="py-4 px-6 inline-flex items-center hover:bg-violet-900"
-            >
-              {category.name}
-              <svg
-                className="ml-2 w-4 h-4"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <div className="relative group">
+              <Link
+                to={`/categorization/${category._id}`}
+                className="first:pr-0 px-[22px] inline-flex items-center text-[16px] font-normal leading-[100%] text-text"
               >
-                <path d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </Link>
-            <div className="absolute hidden group-hover:block bg-violet-900">
-              {category.subcategories?.map((subcategory: Subcategory) => (
-                <Link
-                  key={subcategory._id}
-                  to={`/categorization/${category._id}/subcategorization/${subcategory._id}`}
-                  className="block py-2 px-4 hover:bg-violet-800"
-                >
-                  {subcategory.name}
-                </Link>
-              ))}
+                {category.name}
+                <img src="/arrow-down.svg" alt="Arrow" className="ml-1" />
+              </Link>
+
+              {/* Dropdown */}
+              <div className="absolute right-0 top-full mt-2 w-48 bg-white text-text rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                {category.subcategories?.map((subcategory: Subcategory) => (
+                  <Link
+                    key={subcategory._id}
+                    to={`/categorization/${category._id}/subcategorization/${subcategory._id}`}
+                    className="block py-2 px-4 hover:bg-text-hover hover:text-white rounded-md transition-colors duration-200"
+                  >
+                    {subcategory.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         ))}

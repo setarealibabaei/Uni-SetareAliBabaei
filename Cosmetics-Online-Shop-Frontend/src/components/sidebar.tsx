@@ -1,5 +1,3 @@
-
-////////////////////////
 import { Link, useLocation } from "react-router-dom";
 import { GetAllCategories } from "../api/getAllCategories";
 import { GetAllSubcategories } from "../api/getAllSubcategories";
@@ -45,45 +43,57 @@ const Sidebar = () => {
   }));
 
   return (
-    <div className="hidden md:visible  md:flex md:flex-col w-full  md:w-64 text-gray-700 bg-violet-50 items-center  flex-shrink-0">
+    <div
+      className="
+    hidden md:flex md:flex-col items-start flex-shrink-0 h-auto
+    bg-layout-sidebar text-text 
+    border-l border-border
+    px-[30px] pt-[30px]
+    w-[182px]
+    text-[16px]
+   
+  "
+    >
       {categoriesWithSubcategories?.map((category: Category) => (
-        
-        <div key={category._id} className="p-4">
+        <div key={category._id} className="mb-[30px] w-full">
           <Link
             to={`/categorization/${category._id}`}
-            className={`text-lg font-semibold ${
-              location.pathname.includes(`/categorization/${category._id}`) &&
-              !location.pathname.includes("/subcategorization/")
-                ? "text-black"
-                : "text-gray-600"
-            }`}
+            className={`
+              font-semibold
+              text-accent
+              hover:text-text-hover
+              transition-colors duration-200
+              ${
+                location.pathname.includes(`/categorization/${category._id}`) &&
+                !location.pathname.includes("/subcategorization/")
+                  ? "text-accent"
+                  : "text-accent"
+              }
+            `}
           >
-            <div className="flex items-center">
-              {/* <img
-                  src={`http://localhost:8000/images/categories/icons/${category.icon}`}
-                  alt={category.name}
-                  className="w-10 h-10 object-cover rounded-full"
-                /> */}
-              {category.name}
-            </div>
+            <div className="flex items-center">{category.name}</div>
           </Link>
-          
-          <ul className="mt-2">
-            {category.subcategories?.map((subcategory: Subcategory) => (
-              <li key={subcategory._id} className="mt-1">
-                <Link
-                  to={`/categorization/${category._id}/subcategorization/${subcategory._id}`}
-                  className={`hover:text-gray-800 ${
-                    location.pathname ===
-                    `/categorization/${category._id}/subcategorization/${subcategory._id}`
-                      ? "font-bold text-black"
-                      : "text-gray-600"
-                  }`}
-                >
-                  {subcategory.name}
-                </Link>
-              </li>
-            ))}
+
+          <ul className="mt-2 space-y-1">
+            {category.subcategories?.map((subcategory: Subcategory) => {
+              const isActive =
+                location.pathname ===
+                `/categorization/${category._id}/subcategorization/${subcategory._id}`;
+              return (
+                <li key={subcategory._id}>
+                  <Link
+                    to={`/categorization/${category._id}/subcategorization/${subcategory._id}`}
+                    className={`
+                      transition-colors duration-200
+                      hover:text-text-hover
+                      ${isActive ? "font-bold text-text-active" : "text-text"}
+                    `}
+                  >
+                    {subcategory.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}
