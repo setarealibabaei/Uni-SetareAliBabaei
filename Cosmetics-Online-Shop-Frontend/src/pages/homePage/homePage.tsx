@@ -68,9 +68,9 @@ const HomePage: React.FC = () => {
           modules={[Navigation]}
           navigation
           spaceBetween={30}
-          slidesPerView={1.5}
+          slidesPerView={1}
           breakpoints={{
-            640: { slidesPerView: 2.5 },
+            640: { slidesPerView: 2 },
             1024: { slidesPerView: 4 },
           }}
           className="custom-swiper"
