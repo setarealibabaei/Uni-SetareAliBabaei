@@ -185,7 +185,7 @@ const HomePage: React.FC = () => {
                   className="text-accent text-xl "
                   to={`/categorization/${category._id}`}
                 >
-                  دیدن همه محصولات {category.name}
+                  دیدن همه  {category.name}
                 </Link>
               </div>
             </div>

@@ -58,8 +58,8 @@ const CategorizationPage = () => {
     );
 
   return (
-    <div className="m-5 w-full flex flex-col">
-      <div className="text-xl text-text font-bold mb-6">{`خانه / ${categoryName}`}</div>
+    <div className="mt-5  mb-5 w-full flex flex-col">
+      <div className="text-xl text-text font-bold mb-6 pr-5">{`خانه / ${categoryName}`}</div>
       <div className="grid grid-cols-1 m-auto sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {products.map((product: Product) => (
           <ProductItem key={product._id} product={product} />

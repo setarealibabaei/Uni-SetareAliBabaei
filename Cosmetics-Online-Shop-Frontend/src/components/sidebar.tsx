@@ -49,7 +49,7 @@ const Sidebar = () => {
     bg-layout-sidebar text-text 
     border-l border-border
     px-[30px] pt-[30px]
-    w-[182px]
+    w-[220px]
     text-[16px]
    
   "
