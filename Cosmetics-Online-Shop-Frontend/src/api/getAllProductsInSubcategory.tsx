@@ -11,7 +11,7 @@ export const GetAllProductsInSubcategory = async (
     },
   };
   const response = await axios.get(
-    `http://localhost:8000/api/products?subcategory=${subcategory_id}&page=${page}&limit=8&sort=-createdAt`,
+    `/api/products?subcategory=${subcategory_id}&page=${page}&limit=8&sort=-createdAt`,
     config
   );
   return response.data;

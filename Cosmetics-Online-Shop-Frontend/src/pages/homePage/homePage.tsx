@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
                 <Link to={`/products/${product._id}`}>
                   <div className="flex flex-col justify-start w-[277px] h-full border border-border p-[25px] shadow-lg rounded-2xl">
                     <img
-                      src={`http://localhost:8000/images/products/thumbnails/${product.thumbnail}`}
+                      src={`/images/products/thumbnails/${product.thumbnail}`}
                       alt={product.name}
                       className="w-[227px] h-[227px] mb-[25px] border border-border rounded-md object-cover self-center"
                     />

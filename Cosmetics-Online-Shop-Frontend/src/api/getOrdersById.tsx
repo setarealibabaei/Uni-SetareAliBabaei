@@ -10,7 +10,7 @@ export const GetOrderById = async (OrderId: string) => {
   };
   const response = await axios.get(
     
-    `http://localhost:8000/api/orders/${OrderId}`,
+    `/api/orders/${OrderId}`,
     config
   );
 

@@ -6,7 +6,7 @@
 //   const accessToken = localStorage.getItem("accessToken");
 //   const response = await axios.get(
     
-//     `http://localhost:8000/api/orders?page=${page}&limit=6&sort=-createdAt&deliveryStatus=${status}`,
+//     `/api/orders?page=${page}&limit=6&sort=-createdAt&deliveryStatus=${status}`,
 //     {
 //       headers: {
 //         Authorization: `Bearer ${accessToken}`,
@@ -25,7 +25,7 @@ export const getOrders = async (page :number ,status: boolean | undefined) => {
   const deliveryStatus = status !== undefined ? `&deliveryStatus=${status}` : "";
 
   const response = await axios.get(
-    `http://localhost:8000/api/orders?page=${page}&limit=6&sort=-createdAt${deliveryStatus}`,
+    `/api/orders?page=${page}&limit=6&sort=-createdAt${deliveryStatus}`,
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,

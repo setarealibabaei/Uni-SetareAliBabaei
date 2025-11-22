@@ -84,7 +84,7 @@ export default function ProductTable({
       <tr key={_id}>
         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-600">
           <img
-            src={`http://localhost:8000/images/products/thumbnails/${thumbnail}`}
+            src={`/images/products/thumbnails/${thumbnail}`}
             alt={name}
             className="w-32 object-contain m-auto"
           />
@@ -250,7 +250,7 @@ export default function ProductTable({
 //       <tr key={_id}>
 //         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-600">
 //           <img
-//             src={`http://localhost:8000/images/products/thumbnails/${thumbnail}`}
+//             src={`/images/products/thumbnails/${thumbnail}`}
 //             alt={name}
 //             className="w-32 object-contain m-auto"
 //           />

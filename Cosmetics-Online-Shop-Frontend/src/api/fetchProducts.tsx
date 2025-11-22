@@ -8,7 +8,7 @@ export const fetchProducts = async (page: number) => {
     },
   };
   const response = await axios.get(
-    `http://localhost:8000/api/products?page=${page}&limit=5&fields=-rating,-createdAt,-updatedAt,-__v&sort=-createdAt`,
+    `/api/products?page=${page}&limit=5&fields=-rating,-createdAt,-updatedAt,-__v&sort=-createdAt`,
     config
   );
   return response.data;

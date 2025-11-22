@@ -57,7 +57,7 @@ const LoginPageToBuy: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/login",
+        "/api/auth/login",
         data
       );
       localStorage.setItem("accessToken", response.data.token.accessToken);

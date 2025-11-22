@@ -23,7 +23,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
         "
       >
         <img
-          src={`http://localhost:8000/images/products/thumbnails/${product.thumbnail}`}
+          src={`/images/products/thumbnails/${product.thumbnail}`}
           alt={product.name}
           className="w-[227px] h-[227px] mb-[25px] border border-border rounded-md object-cover self-center"
         />

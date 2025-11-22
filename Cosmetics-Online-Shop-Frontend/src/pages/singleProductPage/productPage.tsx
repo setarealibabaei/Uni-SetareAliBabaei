@@ -113,13 +113,13 @@ const ProductPage = () => {
               {product.images.map((image, index) => (
                 <img
                   key={index}
-                  src={`http://localhost:8000/images/products/images/${image}`}
+                  src={`/images/products/images/${image}`}
                   alt={`Product ${index + 1}`}
                   className="w-full  object-cover border-border border rounded-[16px]"
                 />
               ))}
               <img
-                src={`http://localhost:8000/images/products/thumbnails/${product.thumbnail}`}
+                src={`/images/products/thumbnails/${product.thumbnail}`}
                 alt={product.name}
                 className="w-full  object-cover  border-border border rounded-[16px]"
               />

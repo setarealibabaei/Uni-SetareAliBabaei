@@ -36,7 +36,7 @@ export const sendProductData = async (
 
   try {
     const response = await axios.post(
-      "http://localhost:8000/api/products",
+      "/api/products",
       formData,
       {
         headers: {

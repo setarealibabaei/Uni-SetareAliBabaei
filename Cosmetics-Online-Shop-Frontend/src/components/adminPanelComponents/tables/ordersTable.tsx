@@ -42,7 +42,7 @@ export default function OrdersTable({
   const handleMarkAsDelivered = async (orderId: string) => {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/api/orders/${orderId}`,
+        `/api/orders/${orderId}`,
         {
           deliveryStatus: true,
         }

@@ -8,7 +8,7 @@ export const GetAllCategories = async () => {
     },
   };
   const response = await axios.get(
-    `http://localhost:8000/api/categories`,
+    `/api/categories`,
     config
   );
   return response.data.data;

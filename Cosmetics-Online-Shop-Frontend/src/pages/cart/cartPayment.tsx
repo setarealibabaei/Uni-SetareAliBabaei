@@ -40,7 +40,7 @@ export default function CartPayment() {
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/orders`,
+        `/api/orders`,
         orderData,
         config
       );

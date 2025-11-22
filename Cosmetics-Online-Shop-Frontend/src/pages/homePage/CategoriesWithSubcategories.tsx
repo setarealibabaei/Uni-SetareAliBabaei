@@ -50,7 +50,7 @@
 //       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 //         {categoriesWithSubcategories?.map((category: Category) => (
 //           <div key={category._id} className="flex flex-col items-center justify-center p-4 shadow-lg rounded-lg">
-//             <img src={`http://localhost:8000/images/categories/icons/${category.icon}`} alt={category.name} className="w-20 h-20 object-cover rounded-full" />
+//             <img src={`/images/categories/icons/${category.icon}`} alt={category.name} className="w-20 h-20 object-cover rounded-full" />
 //             <h3 className="mt-2 text-lg font-semibold">{category.name}</h3>
 //             {category.subcategories?.map((subcategory: Subcategory) => (
 //               <div key={subcategory._id} className="mt-2">

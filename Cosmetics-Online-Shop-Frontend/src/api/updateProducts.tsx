@@ -17,7 +17,7 @@
 
 //     try {
 //       const response = await axios.patch(
-//         `http://localhost:8000/api/products/${productId}`,
+//         `/api/products/${productId}`,
 //         formData,
 //         config
 //       );
@@ -63,7 +63,7 @@ export const updateProduct = async (
 
   try {
     const response = await axios.patch(
-      `http://localhost:8000/api/products/${productId}`,
+      `/api/products/${productId}`,
       formData,
       config
     );

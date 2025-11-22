@@ -10,7 +10,7 @@ export default function Header() {
         <Link to="/">
           <img
             className="h-16 w-16 rounded-full "
-            src="../../public/favicon.png"
+            src="/public/favicon.png"
             alt="لوندر"
           />
         </Link>

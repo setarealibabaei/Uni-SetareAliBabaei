@@ -9,7 +9,7 @@ export const GetCategoryById = async (CategoryById: string) => {
     },
   };
   const response = await axios.get(
-    `http://localhost:8000/api/categories/${CategoryById}`,
+    `/api/categories/${CategoryById}`,
     config
   );
 

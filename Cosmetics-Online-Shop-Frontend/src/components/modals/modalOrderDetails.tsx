@@ -138,7 +138,7 @@ const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                       <td className="px-3 py-4 whitespace-nowrap">
                         <Link to={`/products/${item.product._id}`}>
                           <img
-                            src={`http://localhost:8000/images/products/thumbnails/${item.product.thumbnail}`}
+                            src={`/images/products/thumbnails/${item.product.thumbnail}`}
                             alt={item.product.name}
                             className="w-10 h-10 object-cover"
                           />

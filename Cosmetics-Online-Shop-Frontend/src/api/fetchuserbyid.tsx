@@ -9,7 +9,7 @@ export const fetchuserById = async (id: string) => {
     },
   };
   const response = await axios.get(
-    `http://localhost:8000/api/users/${id}`,
+    `/api/users/${id}`,
     config
   );
 

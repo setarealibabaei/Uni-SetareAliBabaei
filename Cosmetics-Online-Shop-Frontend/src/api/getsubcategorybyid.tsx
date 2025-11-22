@@ -9,7 +9,7 @@ export const GetsubcategoryById = async (subcategoriesId: string) => {
     },
   };
   const response = await axios.get(
-    `http://localhost:8000/api/subcategories/${subcategoriesId}`,
+    `/api/subcategories/${subcategoriesId}`,
     config
   );
 

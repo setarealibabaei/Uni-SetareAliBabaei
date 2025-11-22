@@ -9,10 +9,7 @@ export const deleteProduct = async (productId: string) => {
   };
 
   try {
-    await axios.delete(
-      `http://localhost:8000/api/products/${productId}`,
-      config
-    );
+    await axios.delete(`/api/products/${productId}`, config);
 
     // alert('محصول با موفقیت حذف شد.');
   } catch (error) {

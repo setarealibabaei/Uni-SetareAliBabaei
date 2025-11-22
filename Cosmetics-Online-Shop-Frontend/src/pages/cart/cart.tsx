@@ -28,7 +28,7 @@ const getProductById = async (productId: string) => {
     },
   };
   const response = await axios.get(
-    `http://localhost:8000/api/products/${productId}`,
+    `/api/products/${productId}`,
     config
   );
 
@@ -175,7 +175,7 @@ export default function Cart() {
                   <div className="w-full flex flex-col">
                     <Link to={`/products/${productId}`} key={productId}>
                       <img
-                        src={`http://localhost:8000/images/products/thumbnails/${productInfos[productId]?.image}`}
+                        src={`/images/products/thumbnails/${productInfos[productId]?.image}`}
                         alt="محصول"
                         className="w-28"
                       />

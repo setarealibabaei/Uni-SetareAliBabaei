@@ -31,7 +31,7 @@
 //           className="flex flex-col items-center justify-center p-4 shadow-lg rounded-lg"
 //         >
 //           <img
-//             src={`http://localhost:8000/images/categories/icons/${category.icon}`}
+//             src={`/images/categories/icons/${category.icon}`}
 //             alt={category.name}
 //             className="w-20 h-20 object-cover rounded-full"
 //           />
