@@ -128,7 +128,7 @@ export default function Footer() {
             <Link to="/">
               <img
                 className="h-16 w-16 rounded-full "
-                src="../../public/favicon.png"
+                src="/favicon.png"
                 alt="لوندر"
               />
             </Link>
@@ -145,7 +145,7 @@ export default function Footer() {
           <div className="flex justify-center mb-5 gap-9">
             <img
               className="h-11 w-11"
-              src="../../public/enamad.svg"
+              src="/enamad.svg"
               alt="اینماد"
             />
             <div className="flex flex-col justify-center">

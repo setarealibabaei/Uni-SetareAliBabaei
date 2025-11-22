@@ -10,7 +10,7 @@ export default function UnsuccessfulPayment() {
           <div>
             <img
               className="h-28 w-28 rounded-full mb-8 "
-              src="../../../public/favicon.png"
+              src="/favicon.png"
               alt="lavender"
             />
           </div>

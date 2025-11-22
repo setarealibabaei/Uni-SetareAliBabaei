@@ -65,7 +65,7 @@ export default function CartPayment() {
       <div className="mt-10">
         <img
           className="w-[600px] m-auto"
-          src="../../public/download.png"
+          src="/download.png"
           alt=""
         />
         <div className="flex justify-center ">

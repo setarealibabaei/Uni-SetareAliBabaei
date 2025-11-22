@@ -130,7 +130,7 @@ const AdminLogin: React.FC = () => {
             <div>
               <img
                 className="h-28 w-28 rounded-full mb-8 "
-                src="../../../public/lavender.png"
+                src="/lavender.png"
                 alt="lavender"
               />
             </div>

@@ -17,7 +17,7 @@ export default function AdminTopBar() {
             <div>
               <img
                 className="h-16 w-16 rounded-full "
-                src="../../public/lavender.png"
+                src="/lavender.png"
                 alt=""
               />
             </div>
